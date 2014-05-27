@@ -1,0 +1,14 @@
+﻿@model Portal.Areas.Admin.Models.UsersViewModel
+@using Portal.Resources
+
+@{
+    ViewBag.Title = Resource.Users;
+}
+
+<div class="grid_container">
+
+    @Html.Partial("Toolbar/_Toolbar", Model)
+
+    @Html.Partial("Grid/_Grid", Model)
+
+</div>

@@ -1,0 +1,68 @@
+body {
+  background: #ebebeb; }
+
+.home_sections {
+  max-width: 960px;
+  margin: 10px auto;
+  padding: 0; }
+  .home_sections .user_action {
+    margin: 0 15px 15px 0; }
+    .home_sections .user_action .dropdown-menu {
+      min-width: 240px;
+      right: 0 !important;
+      left: auto !important; }
+      .home_sections .user_action .dropdown-menu span {
+        display: block;
+        padding: 3px 20px 0;
+        color: #999; }
+  .home_sections .logo {
+    clear: both;
+    max-width: 136px;
+    margin: 0 auto 40px; }
+  .home_sections .form-group {
+    margin-bottom: 30px; }
+    .home_sections .form-group .section {
+      background-color: #fff;
+      height: 170px;
+      padding: 20px;
+      border: 1px solid #ddd; }
+      .home_sections .form-group .section h3 {
+        margin-top: 0; }
+      .home_sections .form-group .section .btn {
+        margin-top: 20px;
+        white-space: normal;
+        position: absolute;
+        bottom: 20px; }
+      .home_sections .form-group .section .input-group {
+        width: 70%; }
+      .home_sections .form-group .section.long {
+        height: auto; }
+        .home_sections .form-group .section.long .btn {
+          margin: 0;
+          position: relative;
+          bottom: 0; }
+      .home_sections .form-group .section.administration {
+        background: white url(../images/home-administrare.png) 95% 50% no-repeat; }
+      .home_sections .form-group .section.organization {
+        background: white url(../images/home-organizatie.png) 95% 50% no-repeat; }
+      .home_sections .form-group .section.hr {
+        background: white url(../images/home-hr.png) 95% 50% no-repeat; }
+      .home_sections .form-group .section.flows {
+        background: white url(../images/home-formulare.png) 95% 50% no-repeat; }
+      .home_sections .form-group .section.registry {
+        background: white url(../images/home-registratura.png) 95% 50% no-repeat; }
+      .home_sections .form-group .section.departments {
+        background: white url(../images/home-departamente.png) 95% 50% no-repeat; }
+      .home_sections .form-group .section.projects {
+        background: white url(../images/home-proiecte.png) 95% 50% no-repeat; }
+      .home_sections .form-group .section.legislation {
+        background: white url(../images/home-legislatie.png) 95% 50% no-repeat; }
+
+@media screen and (max-width: 767px) {
+  .home_sections .form-group {
+    margin-bottom: 10px; }
+    .home_sections .form-group .section {
+      height: auto; }
+      .home_sections .form-group .section .btn {
+        position: relative;
+        bottom: auto; } }

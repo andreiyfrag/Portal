@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PortalFreelancingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Jobs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Tags" Type="nvarchar(max)" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="IsAdvanceLiquidation" Type="bit" Nullable="false" />
+    <Property Name="MinimumExperience" Type="int" />
+    <Property Name="Duration" Type="nvarchar(max)" />
+    <Property Name="Id_Employee" Type="bigint" Nullable="false" />
+    <Property Name="Id_Job_Employees" Type="bigint" />
+    <Property Name="Id_Accepted_Employee" Type="bigint" />
+  </EntityType>
+  <EntityType Name="JobsEmployes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Job" Type="bigint" Nullable="false" />
+    <Property Name="Id_Employee" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Lastname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Firstname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="Reputation" Type="bigint" />
+    <Property Name="Domains" Type="nvarchar(max)" />
+    <Property Name="Experince" Type="int" />
+    <Property Name="Id_Project" Type="bigint" />
+    <Property Name="Id_Identity" Type="bigint" />
+    <Property Name="LastAuth" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_Jobs_UsersEmployee">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Jobs" Type="Self.Jobs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Jobs">
+        <PropertyRef Name="Id_Accepted_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jobs_UsersEmployer">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Jobs" Type="Self.Jobs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Jobs">
+        <PropertyRef Name="Id_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobsEmployes_Jobs">
+    <End Role="Jobs" Type="Self.Jobs" Multiplicity="1" />
+    <End Role="JobsEmployes" Type="Self.JobsEmployes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jobs">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobsEmployes">
+        <PropertyRef Name="Id_Job" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobsEmployes_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="JobsEmployes" Type="Self.JobsEmployes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobsEmployes">
+        <PropertyRef Name="Id_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PortalFreelancingModelStoreContainer">
+    <EntitySet Name="Jobs" EntityType="Self.Jobs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="JobsEmployes" EntityType="Self.JobsEmployes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Jobs_UsersEmployee" Association="Self.FK_Jobs_UsersEmployee">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Jobs" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jobs_UsersEmployer" Association="Self.FK_Jobs_UsersEmployer">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Jobs" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobsEmployes_Jobs" Association="Self.FK_JobsEmployes_Jobs">
+      <End Role="Jobs" EntitySet="Jobs" />
+      <End Role="JobsEmployes" EntitySet="JobsEmployes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobsEmployes_Users" Association="Self.FK_JobsEmployes_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="JobsEmployes" EntitySet="JobsEmployes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

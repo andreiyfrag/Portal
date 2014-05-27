@@ -1,0 +1,71 @@
+﻿@model Portal.Areas.Admin.Models.UsersNewModel
+@using Portal.Resources
+@using BForms.Html
+@using BForms.Models
+@*@using Clover.Helpers*@
+
+@*@{
+    var isProtected = Html.GetUserData().IsProtected;
+}*@
+
+<div id="holidays_add" class="grid_toolbar_form">
+    <div class="basic">
+
+        @using (Html.BsBeginForm())
+        {
+            <div class="col-sm-3 col-md-3 col-lg-3 form-group @Html.BsValidationCssFor(m => m.Username)">
+                @Html.BsLabelFor(m => m.Username)
+                <div class="input-group">
+                    @Html.BsInputFor(m => m.Username)
+                    @Html.BsValidationFor(m => m.Username)
+                </div>
+            </div>
+
+            <div class="col-sm-3 col-md-3 col-lg-3 form-group @Html.BsValidationCssFor(m => m.Email)">
+                @Html.BsLabelFor(m => m.Email)
+                <div class="input-group">
+                    @Html.BsInputFor(m => m.Email)
+                    @Html.BsValidationFor(m => m.Email)
+                </div>
+            </div>
+
+            <div class="col-sm-3 col-md-3 col-lg-3 form-group @Html.BsValidationCssFor(m => m.Lastname)">
+                @Html.BsLabelFor(m => m.Lastname)
+                <div class="input-group">
+                    @Html.BsInputFor(m => m.Lastname)
+                    @Html.BsValidationFor(m => m.Lastname)
+                </div>
+            </div>
+
+            <div class="col-sm-3 col-md-3 col-lg-3 form-group @Html.BsValidationCssFor(m => m.Firstname)">
+                @Html.BsLabelFor(m => m.Firstname)
+                <div class="input-group">
+                    @Html.BsInputFor(m => m.Firstname)
+                    @Html.BsValidationFor(m => m.Firstname)
+                </div>
+            </div>
+
+            <div class="col-sm-3 col-md-3 col-lg-3 form-group @Html.BsValidationCssFor(m => m.IsAdmin)">
+                @Html.BsLabelFor(m => m.IsAdmin)
+                <div class="input-group">
+                    @Html.BsSelectFor(m => m.IsAdmin)
+                    @Html.BsValidationFor(m => m.IsAdmin)
+                </div>
+            </div>
+            
+            
+            <div class="col-12 col-sm-12 col-lg-12 bs-validation_summary">
+            @Html.BsValidationSummary()
+        </div>
+
+        <div class="grid_toolbar_submit">
+            <button type="submit" class="btn btn-primary js-btn-save" data-action="#">Adauga</button>
+            <button type="submit" class="btn btn-info js-btn-reset">Reseteaza</button>
+        </div>
+        }
+
+      
+
+    </div>
+</div>
+

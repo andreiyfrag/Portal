@@ -1,0 +1,257 @@
+﻿@model Portal.Areas.Authentification.Models.AuthModels
+@using BForms.Models
+@using BForms.Html
+@using Portal.Helpers
+@using Translator = Portal.Resources.Resource
+
+<div class="login_form">
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @Translator.Auth Working
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#home" data-toggle="tab">Login</a>
+                    </li>
+                    <li>
+                        <a href="#profile" data-toggle="tab">Register</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="home">
+                        <h4>@Translator.Login</h4>
+                        <div class="form_container row blue">
+
+                            @using (Html.BsBeginForm("Login", "Auth", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "bs-form js-loginForm" }))
+                            {
+                                <div class="col-lg-12 bs-validation_summary">
+                                    @Html.BsValidationSummary()
+                                </div>
+
+                                <div class="col-lg-12 form-group">
+                                    @Html.BsLabelFor(m => m.Login.UserName)
+                                    <div class="input-group">
+                                        @Html.BsGlyphiconAddon(Glyphicon.User)
+                                        @Html.BsInputFor(m => m.Login.UserName)
+                                        @Html.BsValidationFor(m => m.Login.UserName)
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 form-group">
+                                    @Html.BsLabelFor(m => m.Login.Password)
+                                    <div class="input-group">
+                                        @Html.BsGlyphiconAddon(Glyphicon.Lock)
+                                        @Html.BsInputFor(m => m.Login.Password)
+                                        @Html.BsValidationFor(m => m.Login.Password)
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <hr />
+                                    <button class="btn btn-default js-loginSubmit" type="submit">@Translator.Login</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile">
+                        <h4>Register</h4>
+                        <div class="form_container row blue">
+                            @using (Html.BsBeginForm("Register", "Auth", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "bs-form js-registerForm" }))
+                            {
+                                <div class="col-lg-12 bs-validation_summary">
+                                    @Html.BsValidationSummary()
+                                </div>
+
+                                <div class="col-lg-12 form-group">
+                                    @Html.BsLabelFor(m => m.Register.UserName)
+                                    <div class="input-group">
+                                        @Html.BsGlyphiconAddon(Glyphicon.User)
+                                        @Html.BsInputFor(m => m.Register.UserName)
+                                        @Html.BsValidationFor(m => m.Register.UserName)
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 form-group">
+                                    @Html.BsLabelFor(m => m.Register.Password)
+                                    <div class="input-group">
+                                        @Html.BsGlyphiconAddon(Glyphicon.Lock)
+                                        @Html.BsInputFor(m => m.Register.Password)
+                                        @Html.BsValidationFor(m => m.Register.Password)
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 form-group">
+                                    @Html.BsLabelFor(m => m.Register.ConfirmPassword)
+                                    <div class="input-group">
+                                        @Html.BsGlyphiconAddon(Glyphicon.Lock)
+                                        @Html.BsInputFor(m => m.Register.ConfirmPassword)
+                                        @Html.BsValidationFor(m => m.Register.ConfirmPassword)
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 form-group">
+                                    @Html.BsLabelFor(m => m.Register.Email)
+                                    <div class="input-group">
+                                        @Html.BsGlyphiconAddon(Glyphicon.Envelope)
+                                        @Html.BsInputFor(m => m.Register.Email)
+                                        @Html.BsValidationFor(m => m.Register.Email)
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 form-group">
+                                    @Html.BsLabelFor(m => m.Register.Lastname)
+                                    <div class="input-group">
+                                        @Html.BsGlyphiconAddon(Glyphicon.User)
+                                        @Html.BsInputFor(m => m.Register.Lastname)
+                                        @Html.BsValidationFor(m => m.Register.Lastname)
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 form-group">
+                                    @Html.BsLabelFor(m => m.Register.Firstname)
+                                    <div class="input-group">
+                                        @Html.BsGlyphiconAddon(Glyphicon.User)
+                                        @Html.BsInputFor(m => m.Register.Lastname)
+                                        @Html.BsValidationFor(m => m.Register.Lastname)
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <hr />
+                                    <button class="btn btn-default js-registerSubmit" type="submit">@Translator.Login</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    </div>
+</div>
+    <!-- /.row -->
+    @*<div class="row">
+            <div class="col-lg-4">
+                <div class="login_form">
+                    <h1>@Translator.Auth</h1>
+                    <div class="form_container row blue">
+
+                        @using (Html.BsBeginForm("Login", "Auth", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "bs-form js-loginForm" }))
+                        {
+                            <div class="col-lg-12 bs-validation_summary">
+                                @Html.BsValidationSummary()
+                            </div>
+
+                            <div class="col-lg-12 form-group">
+                                @Html.BsLabelFor(m => m.Login.UserName)
+                                <div class="input-group">
+                                    @Html.BsGlyphiconAddon(Glyphicon.User)
+                                    @Html.BsInputFor(m => m.Login.UserName)
+                                    @Html.BsValidationFor(m => m.Login.UserName)
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 form-group">
+                                @Html.BsLabelFor(m => m.Login.Password)
+                                <div class="input-group">
+                                    @Html.BsGlyphiconAddon(Glyphicon.Lock)
+                                    @Html.BsInputFor(m => m.Login.Password)
+                                    @Html.BsValidationFor(m => m.Login.Password)
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <hr />
+                                <button class="btn btn-default js-loginSubmit" type="submit">@Translator.Login</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-lg-4">
+
+            </div>
+            <div class="col-lg-4">
+
+                <div class="login_form">
+                    <h1>Inregistrare</h1>
+                    <div class="form_container row blue">
+
+                        @using (Html.BsBeginForm("Register", "Auth", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "bs-form js-registerForm" }))
+                        {
+                            <div class="col-lg-12 bs-validation_summary">
+                                @Html.BsValidationSummary()
+                            </div>
+
+                            <div class="col-lg-12 form-group">
+                                @Html.BsLabelFor(m => m.Register.UserName)
+                                <div class="input-group">
+                                    @Html.BsGlyphiconAddon(Glyphicon.User)
+                                    @Html.BsInputFor(m => m.Register.UserName)
+                                    @Html.BsValidationFor(m => m.Register.UserName)
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 form-group">
+                                @Html.BsLabelFor(m => m.Register.Password)
+                                <div class="input-group">
+                                    @Html.BsGlyphiconAddon(Glyphicon.Lock)
+                                    @Html.BsInputFor(m => m.Register.Password)
+                                    @Html.BsValidationFor(m => m.Register.Password)
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 form-group">
+                                @Html.BsLabelFor(m => m.Register.ConfirmPassword)
+                                <div class="input-group">
+                                    @Html.BsGlyphiconAddon(Glyphicon.Lock)
+                                    @Html.BsInputFor(m => m.Register.ConfirmPassword)
+                                    @Html.BsValidationFor(m => m.Register.ConfirmPassword)
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 form-group">
+                                @Html.BsLabelFor(m => m.Register.Email)
+                                <div class="input-group">
+                                    @Html.BsGlyphiconAddon(Glyphicon.Envelope)
+                                    @Html.BsInputFor(m => m.Register.Email)
+                                    @Html.BsValidationFor(m => m.Register.Email)
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 form-group">
+                                @Html.BsLabelFor(m => m.Register.Lastname)
+                                <div class="input-group">
+                                    @Html.BsGlyphiconAddon(Glyphicon.User)
+                                    @Html.BsInputFor(m => m.Register.Lastname)
+                                    @Html.BsValidationFor(m => m.Register.Lastname)
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 form-group">
+                                @Html.BsLabelFor(m => m.Register.Firstname)
+                                <div class="input-group">
+                                    @Html.BsGlyphiconAddon(Glyphicon.User)
+                                    @Html.BsInputFor(m => m.Register.Lastname)
+                                    @Html.BsValidationFor(m => m.Register.Lastname)
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <hr />
+                                <button class="btn btn-default js-registerSubmit" type="submit">@Translator.Login</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+
+            </div>
+        </div>*@

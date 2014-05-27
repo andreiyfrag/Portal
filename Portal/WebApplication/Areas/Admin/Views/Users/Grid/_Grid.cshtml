@@ -1,0 +1,36 @@
+﻿@model Portal.Areas.Admin.Models.UsersViewModel
+@using BForms.Models
+@using BForms.Grid
+@using BForms.Html
+@using Portal.Resources
+
+
+@(Html.BsGridFor(m => m.Grid)
+      .Theme(BsTheme.Blue)
+      .GridResetButton()
+      .ConfigureBulkActions(bulk =>
+      {
+          bulk.AddAction(BsBulkActionType.Delete).Title(Resource.Delete);
+          bulk.AddSelector(BsBulkSelectorType.All).Text(Resource.All);
+          bulk.AddSelector(BsBulkSelectorType.None).Text(Resource.None);
+      })
+              .ConfigureColumns(cols =>
+              {
+                  cols.For(x => x.Username).Text(x => x.Username);
+
+                  cols.For(x => x.IsAdmin).Text(x =>x.IsAdmin);
+                  cols.For(x => x.Lastname).Text(x => x.Lastname);
+                  cols.For(x => x.Firstname).Text(x => x.Firstname);
+
+              })
+              .ConfigureRows(cfg => cfg.Highlighter(row => row.IsAdmin ? "#59b444": "#dd3131")
+                  .DetailsTemplate(row => Html.Partial("Grid/Details/_Index", row.Details).ToString())
+                               .HtmlAttributes(row => new Dictionary<string, object>()
+                                                        {
+                                                            { "data-objid", row.Id }
+                                                        })
+                               .HasDetails(row => true)
+                                   .HasCheckbox(row => true)
+                               )
+      .PagerSettings(new BsPagerSettings { Size = 5 }))
+

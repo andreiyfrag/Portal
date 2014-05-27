@@ -1,0 +1,94 @@
+﻿body {
+	background: #ebebeb;
+}
+
+
+.home_sections {
+	max-width: 960px;
+	margin: 10px auto;
+	padding: 0;
+	.user_action  {
+		margin: 0 15px 15px 0;
+		.dropdown-menu {
+			min-width: 240px;
+			right: 0 !important;
+			left: auto !important;
+			span {
+				display: block;
+				padding: 3px 20px 0;
+				color: #999;
+			}
+		}
+	}
+	.logo {
+		clear: both;
+		max-width: 136px;
+		margin: 0 auto 40px;
+	}
+	.form-group {			
+		margin-bottom: 30px;
+		.section {
+			background-color: #fff;
+			height: 170px;
+			padding: 20px;
+			border: 1px solid #ddd;
+			h3 {
+				margin-top: 0;
+			}
+			.btn {
+				margin-top: 20px;
+				white-space: normal;
+				position: absolute;
+				bottom: 20px;
+			}
+			.input-group {
+				width: 70%;
+			}
+			&.long {
+				height: auto;
+				.btn {
+					margin: 0;
+					position: relative;
+					bottom: 0;
+				}
+			}
+			&.administration {
+				background: #fff url(../images/home-administrare.png) 95% 50% no-repeat;
+			}
+			&.organization {
+				background: #fff url(../images/home-organizatie.png) 95% 50% no-repeat;
+			}
+			&.hr {
+				background: #fff url(../images/home-hr.png) 95% 50% no-repeat;
+			}
+			&.flows {
+				background: #fff url(../images/home-formulare.png) 95% 50% no-repeat;
+			}
+			&.registry {
+				background: #fff url(../images/home-registratura.png) 95% 50% no-repeat;
+			}
+			&.departments {
+				background: #fff url(../images/home-departamente.png) 95% 50% no-repeat;
+			}
+			&.projects {
+				background: #fff url(../images/home-proiecte.png) 95% 50% no-repeat;
+			}
+			&.legislation {
+				background: #fff url(../images/home-legislatie.png) 95% 50% no-repeat;
+			}
+		}		
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.home_sections .form-group { 
+		margin-bottom: 10px;
+		.section {
+			height: auto;		
+			.btn {
+				position: relative;
+				bottom: auto;
+			}
+		}
+	}
+}

@@ -1,0 +1,47 @@
+﻿@using Portal.Resources
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="sidebar-search">
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="@Resource.SearchDot">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+                <!-- /input-group -->
+            </li>
+            <li>
+                <a href="@Url.Action("Index","Dash")"><i class="fa fa-dashboard fa-fw"></i>@Resource.UserProfile</a>
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>@Resource.Jobs<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="@Url.Action("MyJobs","Jobs")">@Resource.MyJobs</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("MyJobs","Jobs")">@Resource.FindJobs</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("PotentialJobs","Jobs")">@Resource.PotentialJobs</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="@Url.Action("Mail","Inbox")"><i class="fa fa-table fa-fw"></i>@Resource.Inbox</a>
+            </li>
+            <li>
+                <a href="@Url.Action("MyPayments","Payments")"><i class="fa fa-edit fa-fw"></i> @Resource.Payments</a>
+            </li>
+           
+        </ul>
+        <!-- /#side-menu -->
+    </div>
+    <!-- /.sidebar-collapse -->
+</nav>
+

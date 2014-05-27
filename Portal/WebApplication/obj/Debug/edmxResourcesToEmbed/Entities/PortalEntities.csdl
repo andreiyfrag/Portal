@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PortalFreelancingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PortalFreelancingEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Jobs" EntityType="PortalFreelancingModel.Job" />
+    <EntitySet Name="JobsEmployes" EntityType="PortalFreelancingModel.JobsEmploye" />
+    <EntitySet Name="Users" EntityType="PortalFreelancingModel.User" />
+    <AssociationSet Name="FK_Jobs_UsersEmployee" Association="PortalFreelancingModel.FK_Jobs_UsersEmployee">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Job" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Jobs_UsersEmployer" Association="PortalFreelancingModel.FK_Jobs_UsersEmployer">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Job" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobsEmployes_Jobs" Association="PortalFreelancingModel.FK_JobsEmployes_Jobs">
+      <End Role="Job" EntitySet="Jobs" />
+      <End Role="JobsEmploye" EntitySet="JobsEmployes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_JobsEmployes_Users" Association="PortalFreelancingModel.FK_JobsEmployes_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="JobsEmploye" EntitySet="JobsEmployes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="IsAdvanceLiquidation" Type="Boolean" Nullable="false" />
+    <Property Name="MinimumExperience" Type="Int32" />
+    <Property Name="Duration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Id_Employee" Type="Int64" Nullable="false" />
+    <Property Name="Id_Job_Employees" Type="Int64" />
+    <Property Name="Id_Accepted_Employee" Type="Int64" />
+    <NavigationProperty Name="User" Relationship="PortalFreelancingModel.FK_Jobs_UsersEmployee" FromRole="Job" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="PortalFreelancingModel.FK_Jobs_UsersEmployer" FromRole="Job" ToRole="User" />
+    <NavigationProperty Name="JobsEmployes" Relationship="PortalFreelancingModel.FK_JobsEmployes_Jobs" FromRole="Job" ToRole="JobsEmploye" />
+  </EntityType>
+  <EntityType Name="JobsEmploye">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Job" Type="Int64" Nullable="false" />
+    <Property Name="Id_Employee" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Job" Relationship="PortalFreelancingModel.FK_JobsEmployes_Jobs" FromRole="JobsEmploye" ToRole="Job" />
+    <NavigationProperty Name="User" Relationship="PortalFreelancingModel.FK_JobsEmployes_Users" FromRole="JobsEmploye" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Lastname" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Firstname" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="Reputation" Type="Int64" />
+    <Property Name="Domains" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Experince" Type="Int32" />
+    <Property Name="Id_Project" Type="Int64" />
+    <Property Name="Id_Identity" Type="Int64" />
+    <NavigationProperty Name="Jobs" Relationship="PortalFreelancingModel.FK_Jobs_UsersEmployee" FromRole="User" ToRole="Job" />
+    <NavigationProperty Name="Jobs1" Relationship="PortalFreelancingModel.FK_Jobs_UsersEmployer" FromRole="User" ToRole="Job" />
+    <NavigationProperty Name="JobsEmployes" Relationship="PortalFreelancingModel.FK_JobsEmployes_Users" FromRole="User" ToRole="JobsEmploye" />
+    <Property Name="LastAuth" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_Jobs_UsersEmployee">
+    <End Type="PortalFreelancingModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="PortalFreelancingModel.Job" Role="Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="Id_Accepted_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Jobs_UsersEmployer">
+    <End Type="PortalFreelancingModel.User" Role="User" Multiplicity="1" />
+    <End Type="PortalFreelancingModel.Job" Role="Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="Id_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobsEmployes_Jobs">
+    <End Type="PortalFreelancingModel.Job" Role="Job" Multiplicity="1" />
+    <End Type="PortalFreelancingModel.JobsEmploye" Role="JobsEmploye" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobsEmploye">
+        <PropertyRef Name="Id_Job" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_JobsEmployes_Users">
+    <End Type="PortalFreelancingModel.User" Role="User" Multiplicity="1" />
+    <End Type="PortalFreelancingModel.JobsEmploye" Role="JobsEmploye" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="JobsEmploye">
+        <PropertyRef Name="Id_Employee" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

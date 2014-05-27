@@ -1,0 +1,23 @@
+﻿@model Portal.Areas.Admin.Models.UsersDetailsModel
+@using BForms.Html
+@using BForms.Models
+@using Portal.Resources
+
+<div class="row grid_row_details">
+    <div class="col-sm-6 col-md-6 col-lg-6">
+        <div id="holiday_info" class="grid_details description js-holiday_info">
+
+            <h3 class="editable">
+                @Html.BsGlyphicon(Glyphicon.Calendar)
+                Information
+                @Html.BsGlyphicon(Glyphicon.Pencil, new Dictionary<string, object> { { "class", "open-editable" } })
+            </h3>
+
+            @Html.BsPartialPrefixed(x => x, "Grid/Details/_Readonly", Model, "x" + Model.Id.ToString())
+
+            @Html.BsPartialPrefixed(x => x, "Grid/Details/_Editable", Model, "x" + Model.Id.ToString())
+        </div>
+
+    </div>
+</div>
+

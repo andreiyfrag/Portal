@@ -1,0 +1,18 @@
+﻿@model Portal.Areas.Authentification.Models.AuthModels
+@using BForms.Models
+@using BForms.Html
+@using Portal.Helpers
+@using Translator = Portal.Resources.Resource
+
+@{
+    ViewBag.Title = Translator.Auth;
+}
+
+@if (Model.IsWorking)
+{
+    @Html.Partial("Actions/_Working", Model);
+}
+else
+{
+    @Html.Partial("Actions/_Hiring", Model);
+}

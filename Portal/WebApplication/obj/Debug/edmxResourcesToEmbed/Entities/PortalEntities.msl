@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PortalFreelancingModelStoreContainer" CdmEntityContainer="PortalFreelancingEntities">
+    <EntitySetMapping Name="Jobs">
+      <EntityTypeMapping TypeName="PortalFreelancingModel.Job">
+        <MappingFragment StoreEntitySet="Jobs">
+          <ScalarProperty Name="Id_Accepted_Employee" ColumnName="Id_Accepted_Employee" />
+          <ScalarProperty Name="Id_Job_Employees" ColumnName="Id_Job_Employees" />
+          <ScalarProperty Name="Id_Employee" ColumnName="Id_Employee" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="MinimumExperience" ColumnName="MinimumExperience" />
+          <ScalarProperty Name="IsAdvanceLiquidation" ColumnName="IsAdvanceLiquidation" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Tags" ColumnName="Tags" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobsEmployes">
+      <EntityTypeMapping TypeName="PortalFreelancingModel.JobsEmploye">
+        <MappingFragment StoreEntitySet="JobsEmployes">
+          <ScalarProperty Name="Id_Employee" ColumnName="Id_Employee" />
+          <ScalarProperty Name="Id_Job" ColumnName="Id_Job" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="PortalFreelancingModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="LastAuth" ColumnName="LastAuth" />
+          <ScalarProperty Name="Id_Identity" ColumnName="Id_Identity" />
+          <ScalarProperty Name="Id_Project" ColumnName="Id_Project" />
+          <ScalarProperty Name="Experince" ColumnName="Experince" />
+          <ScalarProperty Name="Domains" ColumnName="Domains" />
+          <ScalarProperty Name="Reputation" ColumnName="Reputation" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

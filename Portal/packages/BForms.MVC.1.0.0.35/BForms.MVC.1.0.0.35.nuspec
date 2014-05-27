@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>BForms.MVC</id>
+    <version>1.0.0.35</version>
+    <title>BForms.MVC</title>
+    <authors>BForms Team</authors>
+    <owners>BForms Team</owners>
+    <projectUrl>http://bforms.stefanprodan.eu/</projectUrl>
+    <iconUrl>http://bforms.stefanprodan.eu/Content/images/bforms-32x32.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>BForms UI Framework for ASP.NET MVC</description>
+    <copyright>Copyright Stefan Prodan and contributors 2013</copyright>
+    <language>en-US</language>
+    <tags>ASP.NET MVC UI JavaScript</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="5.0.8" />
+      <dependency id="RequireJsNet" version="1.0.7.0" />
+      <dependency id="DocumentFormat.OpenXml" version="2.5" />
+    </dependencies>
+  </metadata>
+</package>
